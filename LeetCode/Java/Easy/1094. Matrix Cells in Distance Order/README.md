@@ -8,8 +8,8 @@
 Array, Math, Geometry, Sorting, Matrix
 
 ### 🚀 Performance
-- **Runtime:** 6 ms
-- **Memory:** 46.4 MB
+- **Runtime:** N/A
+- **Memory:** N/A
 
 ---
 

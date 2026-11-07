@@ -1,27 +1,46 @@
 class Solution {
-    public int[][] allCellsDistOrder(int rows, int cols, int rCenter, int cCenter) {
-       
-        int[] counts = new int[rows + cols];
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                counts[Math.abs(r - rCenter) + Math.abs(c - cCenter)]++;
+    public int[][] allCellsDistOrder(
+            int rows, int cols, int rCenter, int cCenter) {
+
+        int[][] ans = new int[rows * cols][2];
+        boolean[][] visited = new boolean[rows][cols];
+
+        int[] dr = {-1, 1, 0, 0};
+        int[] dc = {0, 0, -1, 1};
+
+        Queue<int[]> queue = new LinkedList<>();
+
+        queue.offer(new int[]{rCenter, cCenter});
+        visited[rCenter][cCenter] = true;
+
+        int index = 0;
+
+        while (!queue.isEmpty()) {
+
+            int[] cell = queue.poll();
+
+            int r = cell[0];
+            int c = cell[1];
+
+            ans[index][0] = r;
+            ans[index][1] = c;
+            index++;
+
+            for (int d = 0; d < 4; d++) {
+
+                int nr = r + dr[d];
+                int nc = c + dc[d];
+
+                if (nr >= 0 && nr < rows &&
+                    nc >= 0 && nc < cols &&
+                    !visited[nr][nc]) {
+
+                    visited[nr][nc] = true;
+                    queue.offer(new int[]{nr, nc});
+                }
             }
         }
 
-     
-        int[] partitions = new int[counts.length + 1];
-        for (int i = 1; i < counts.length; i++) {
-            partitions[i] += partitions[i - 1] + counts[i - 1];
-        }
-
-        
-        int[][] result = new int[rows * cols][];
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                int dist = Math.abs(r - rCenter) + Math.abs(c - cCenter);
-                result[partitions[dist]++] = new int[] { r, c };
-            }
-        }
-        return result;
+        return ans;
     }
 }
