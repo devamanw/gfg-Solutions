@@ -1,6 +1,6 @@
 # 📝 1267. Count Servers that Communicate (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/count-servers-that-communicate/?envType=daily-question&envId=2026-11-08)
+🔗 [Problem Link](https://leetcode.com/problems/count-servers-that-communicate)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-orange) ![Language](https://img.shields.io/badge/Language-Java-blue)
 
